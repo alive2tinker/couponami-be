@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::resource('category', App\Http\Controllers\CategoryController::class)->only('index');
+
+Route::resource('store', App\Http\Controllers\StoreController::class)->only('index');
+
+Route::resource('coupon', App\Http\Controllers\CouponController::class)->only('index');
+
+Route::resource('favorite', App\Http\Controllers\FavoriteController::class)->only('index');
