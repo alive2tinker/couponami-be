@@ -29,10 +29,10 @@ class CouponController extends Controller
     {
         return [
             'code',
-            'offer',
-            'details',
-            'store.name',
-            'category.name',
+//            'offer',
+//            'details',
+//            'store.name',
+//            'category.name',
         ];
     }
 
