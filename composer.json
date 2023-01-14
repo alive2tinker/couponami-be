@@ -8,9 +8,11 @@
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
+        "laravel/nova": "~4.0",
         "laravel/sanctum": "^3.1",
         "laravel/tinker": "^2.7",
         "spatie/laravel-translatable": "^6.2",
+        "spatie/nova-translatable": "^3.1",
         "tailflow/laravel-orion": "^2.18"
     },
     "require-dev": {
@@ -64,5 +66,11 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "nova": {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    }
 }

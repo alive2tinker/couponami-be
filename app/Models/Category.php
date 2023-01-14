@@ -36,4 +36,9 @@ class Category extends Model
         'id' => 'integer',
         'name' => 'array',
     ];
+
+    public function coupons()
+    {
+        return $this->hasMany(Coupon::class);
+    }
 }
