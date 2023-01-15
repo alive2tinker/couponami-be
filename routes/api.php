@@ -24,7 +24,7 @@ Route::group(['as' => 'api.'], function() {
     Orion::resource('categories', \App\Http\Controllers\CategoryController::class);
     Orion::resource('stores', \App\Http\Controllers\StoreController::class);
     Orion::resource('coupons', \App\Http\Controllers\CouponController::class);
-    Orion::belongsToResource('favorites', 'user', \App\Http\Controllers\FavoriteController::class);
+    Orion::hasManyResource('users', 'favorites', \App\Http\Controllers\FavoriteController::class);
     Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
     Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
 });
