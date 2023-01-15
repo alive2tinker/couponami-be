@@ -3,21 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\FavoriteResource;
+use App\Http\Resources\UserResource;
 use App\Models\Favorite;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Orion\Concerns\DisableAuthorization;
 use Orion\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-class FavoriteController extends Controller
+use Orion\Http\Controllers\RelationController;
+
+class FavoriteController extends RelationController
 {
 //    use DisableAuthorization;
-    protected $model = Favorite::class;
-    protected $resource = FavoriteResource::class;
+    protected $model = User::class;
+    protected $resource = UserResource::class;
 
-    protected $relation = 'user';
+    protected $relation = 'favorites';
 
     public function resolveUser()
     {
-        return Auth::guard('sanctum')->user();
+        return auth('sanctum')->user();
+    }
+
+    public function registerFavorite()
+    {
+        return response()->json('hello world');
     }
 }
