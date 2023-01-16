@@ -24,9 +24,4 @@ class FavoriteController extends RelationController
     {
         return auth('sanctum')->user();
     }
-
-    public function registerFavorite()
-    {
-        return response()->json('hello world');
-    }
 }
