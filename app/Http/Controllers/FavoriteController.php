@@ -16,7 +16,7 @@ class FavoriteController extends RelationController
 {
 //    use DisableAuthorization;
     protected $model = User::class;
-    protected $resource = UserResource::class;
+    protected $resource = FavoriteResource::class;
 
     protected $relation = 'favorites';
 
