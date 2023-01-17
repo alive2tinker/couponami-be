@@ -11,6 +11,7 @@
         "laravel/nova": "~4.0",
         "laravel/sanctum": "^3.1",
         "laravel/tinker": "^2.7",
+        "mcamara/laravel-localization": "^1.7",
         "spatie/laravel-translatable": "^6.2",
         "spatie/nova-translatable": "^3.1",
         "tailflow/laravel-orion": "^2.18"

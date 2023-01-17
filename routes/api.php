@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Orion\Facades\Orion;
 
 /*
@@ -19,13 +20,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::group(['as' => 'api.'], function() {
-    Route::post('favoriteCoupon/{user}/{coupon}', [\App\Http\Controllers\FavoriteController::class, 'registerFavorite']);
-    Orion::resource('categories', \App\Http\Controllers\CategoryController::class);
-    Orion::resource('stores', \App\Http\Controllers\StoreController::class);
-    Orion::resource('coupons', \App\Http\Controllers\CouponController::class);
-    Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
-    Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
-    Route::get('user/{user}/favorites', [\App\Http\Controllers\FavoriteController::class, 'list']);
+Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+{
+    Route::group(['as' => 'api.'], function() {
+        Route::post('favoriteCoupon/{user}/{coupon}', [\App\Http\Controllers\FavoriteController::class, 'registerFavorite']);
+        Orion::resource('categories', \App\Http\Controllers\CategoryController::class);
+        Orion::resource('stores', \App\Http\Controllers\StoreController::class);
+        Orion::resource('coupons', \App\Http\Controllers\CouponController::class);
+        Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
+        Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
+        Route::get('user/{user}/favorites', [\App\Http\Controllers\FavoriteController::class, 'list']);
+    });
 });
