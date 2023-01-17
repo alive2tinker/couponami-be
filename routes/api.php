@@ -21,15 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::group(['as' => 'api.'], function() {
-    Route::post('favoriteCoupon/{user}/{coupon}', function (\App\Models\User $user, $related){
-        $coupon = \App\Models\Coupon::find($related);
-        $coupon->favorites()->create(['user_id' => $user->id]);
-        return response()->json(__("favorited successfully"), 201);
-    });
+    Route::post('favoriteCoupon/{user}/{coupon}', [\App\Http\Controllers\FavoriteController::class, 'registerFavorite']);
     Orion::resource('categories', \App\Http\Controllers\CategoryController::class);
     Orion::resource('stores', \App\Http\Controllers\StoreController::class);
     Orion::resource('coupons', \App\Http\Controllers\CouponController::class);
-    Orion::hasManyResource('user', 'favorites', \App\Http\Controllers\FavoriteController::class);
     Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
     Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
+    Route::get('user/{user}/favorites', [\App\Http\Controllers\FavoriteController::class, 'list']);
 });
