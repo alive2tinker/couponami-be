@@ -20,14 +20,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::group(['prefix' => LaravelLocalization::setLocale()], function()
-{
-    Route::post('favoriteCoupon/{user}/{coupon}', [\App\Http\Controllers\FavoriteController::class, 'registerFavorite']);
+Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
+Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
+Route::post('favoriteCoupon/{user}/{coupon}', [\App\Http\Controllers\FavoriteController::class, 'registerFavorite']);
+
+Route::localized(function () {
     Orion::resource('categories', \App\Http\Controllers\CategoryController::class);
     Orion::resource('stores', \App\Http\Controllers\StoreController::class);
     Orion::resource('coupons', \App\Http\Controllers\CouponController::class);
-    Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
-    Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
     Route::get('user/{user}/favorites', [\App\Http\Controllers\FavoriteController::class, 'list']);
 });
-
