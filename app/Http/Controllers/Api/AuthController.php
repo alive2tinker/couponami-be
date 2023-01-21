@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\NotificationToken;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -49,5 +50,14 @@ class AuthController extends Controller
             'email' => $user->email,
             'token' => explode('|', $user->createToken($request->device_name)->plainTextToken)[1]
         ));
+    }
+
+    public function registerToken(Request $request)
+    {
+        NotificationToken::create([
+            'token' => $request->input('notifyToken')
+        ]);
+
+        return response()->json([], 200);
     }
 }

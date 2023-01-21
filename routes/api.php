@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
 Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
 Route::post('favoriteCoupon/{user}/{coupon}', [\App\Http\Controllers\FavoriteController::class, 'registerFavorite']);
-
+Route::post('registerToken', [\App\Http\Controllers\Api\AuthController::class, 'registerToken']);
 Route::localized(function () {
     Orion::resource('categories', \App\Http\Controllers\CategoryController::class);
     Orion::resource('stores', \App\Http\Controllers\StoreController::class);
