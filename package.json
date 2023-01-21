@@ -2,7 +2,9 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "build-fb-push-notifications": "cd nova-components/FbPushNotifications && npm run dev",
+        "build-fb-push-notifications-prod": "cd nova-components/FbPushNotifications && npm run prod"
     },
     "devDependencies": {
         "axios": "^1.1.2",
