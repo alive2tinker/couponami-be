@@ -17,7 +17,7 @@ class FavoriteController extends Controller
 
     public function registerFavorite(\App\Models\User $user, $related)
     {
-        return response()->json($related, 200);
+//        return response()->json($related, 200);
         $coupon = \App\Models\Coupon::find($related);
         $coupon->favorites()->create(['user_id' => $user->id]);
         return response()->json(__("favorited successfully"), 201);
