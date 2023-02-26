@@ -19,7 +19,12 @@ class FavoriteController extends Controller
     {
 //        return response()->json($related, 200);
         $coupon = \App\Models\Coupon::find($related);
-        $coupon->favorites()->create(['user_id' => $user->id]);
-        return response()->json(__("favorited successfully"), 201);
+        $favorite = $coupon->favorites()->where('user_id', $user->id)->first();
+        if(!$favorite){
+            $coupon->favorites()->create(['user_id' => $user->id]);
+            return response()->json(__("favorited successfully"), 201);
+        }else{
+            return response()->json(__("this coupon has been favorited already"), 400);
+        }
     }
 }

@@ -22,6 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
 Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
+Route::get('checkUser', [\App\Http\Controllers\Api\AuthController::class, 'checkUser']);
+Route::post('reset-password', [\App\Http\Controllers\Api\AuthController::class, 'resetPass']);
 Route::post('favoriteCoupon/{user}/{coupon}', [\App\Http\Controllers\FavoriteController::class, 'registerFavorite']);
 Route::post('registerToken', [\App\Http\Controllers\Api\AuthController::class, 'registerToken']);
 Route::localized(function () {
