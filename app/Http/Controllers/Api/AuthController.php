@@ -20,7 +20,6 @@ class AuthController extends Controller
            'phone' => $request->input('phone'),
             'password' => bcrypt($request->input('password')),
         ]);
-        Log::debug('registration request', $request->all());
         return response()->json(data: array(
             'id' => $user->id,
             'name' => $user->name,
@@ -64,7 +63,16 @@ class AuthController extends Controller
 
     public function resetPass(Request $request)
     {
-        //
+        Log::debug('password update request', [
+            'request' => $request->all(),
+            'newPassword' => $request->input('newPassword')
+        ]);
+        try{
+            User::where('phone', trim($request->input('email'), '+'))->first()->update(['password' => bcrypt($request->input('newPassword'))]);
+            return response()->json([], 200);
+        }catch (\Exception $e){
+            return response()->json($e->getMessage(), $e->getCode());
+        }
     }
 
     public function checkUser(Request $request)
@@ -77,8 +85,6 @@ class AuthController extends Controller
         if(!$user){
             return response()->json('no user found', 404);
         }
-
-        //TODO: send otp via firebase.
 
         return response()->json('', 200);
     }
