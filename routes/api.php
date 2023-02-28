@@ -25,6 +25,8 @@ Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login'])
 Route::get('checkUser', [\App\Http\Controllers\Api\AuthController::class, 'checkUser']);
 Route::post('reset-password', [\App\Http\Controllers\Api\AuthController::class, 'resetPass']);
 Route::post('favoriteCoupon/{user}/{coupon}', [\App\Http\Controllers\FavoriteController::class, 'registerFavorite']);
+Route::delete('unfavoriteCoupon/{user}/{coupon}', [\App\Http\Controllers\FavoriteController::class, 'deleteFavorite']);
+Route::get('settings', \App\Http\Controllers\ListSettingsController::class);
 Route::post('registerToken', [\App\Http\Controllers\Api\AuthController::class, 'registerToken']);
 Route::localized(function () {
     Orion::resource('categories', \App\Http\Controllers\CategoryController::class);
