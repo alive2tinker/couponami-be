@@ -12,22 +12,18 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         @vite(['resources/css/app.css'])
     </head>
-    <body class="antialiased">
-        <div class="flex h-screen">
-            <div class="m-auto w-1/3 -pl-12">
-                <div class="flex justify-between">
-                    <div class="bg-white rounded-lg p-5">
-                        <div class="flex">
-                            <img src="{{ asset('images/nuIcon.png') }}" alt="" class="w-20 h-20">
-                            <h1 class="text-2xl font-bold mt-5">@lang('Couponami')</h1>
-                        </div>
-                        <p class="ml-5">@lang('intro')</p>
-                    </div>
-                    <div>
-                        <div class="iphone-x"></div>
-                    </div>
+    <body class="antialiased overflow-y-hidden">
+    <div class="gradient" style="position: absolute"></div>
+    <div class="flex h-screen overflow-y-none">
+        <div class="m-auto py-20">
+            <div>
+                <h1 class="text-4xl text-center text-zinc-300 font-black">@lang('Couponami')</h1>
+                <div class="flex justify-center">
+                    <p class="w-48 text-center text-zinc-400 py-4">@lang('intro')</p>
                 </div>
+                <div class="iphone-x my-7"></div>
             </div>
         </div>
+    </div>
     </body>
 </html>
