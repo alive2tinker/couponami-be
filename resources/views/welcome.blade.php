@@ -12,12 +12,18 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         @vite(['resources/css/app.css'])
     </head>
-    <body class="antialiased overflow-y-hidden">
+    <body class="antialiased" style="background-color: #222;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    place-content: center;
+    align-items: center;
+    overflow: hidden;">
     <div class="gradient" style="position: absolute"></div>
     <div class="flex h-screen overflow-y-none">
         <div class="m-auto py-20">
             <div>
-                <h1 class="text-4xl text-center text-zinc-300 font-black">@lang('Couponami')</h1>
+                <h1 class="text-4xl text-center text-zinc-100 font-black">@lang('Couponami')</h1>
                 <div class="flex justify-center">
                     <p class="w-48 text-center text-zinc-400 py-4">@lang('intro')</p>
                 </div>
