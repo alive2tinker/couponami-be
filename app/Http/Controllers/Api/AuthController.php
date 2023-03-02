@@ -24,6 +24,7 @@ class AuthController extends Controller
             'id' => $user->id,
             'name' => $user->name,
             'email' => $user->email,
+            'phone' => $user->phone,
             'token' => explode('|', $user->createToken($request->input('device_name'))->plainTextToken)[1]
         ));
     }
@@ -88,5 +89,25 @@ class AuthController extends Controller
         }
 
         return response()->json('', 200);
+    }
+
+    public function deleteAccount(User $user)
+    {
+        $user->delete();
+
+        return response()->json([],200);
+    }
+
+    public function updateAccount(Request $request, User $user)
+    {
+        $user->update($request->only('name','email','phone'));
+
+        return response()->json([
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'phone' => $user->phone,
+            'token' => $request->bearerToken()
+        ], 200);
     }
 }

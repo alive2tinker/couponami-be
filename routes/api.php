@@ -19,7 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+Route::middleware('auth:sanctum')->delete('/user/{user}', [\App\Http\Controllers\Api\AuthController::class, 'deleteAccount']);
+Route::middleware('auth:sanctum')->post('/user/{user}/edit', [\App\Http\Controllers\Api\AuthController::class, 'updateAccount']);
 Route::post('register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
 Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
 Route::get('checkUser', [\App\Http\Controllers\Api\AuthController::class, 'checkUser']);
