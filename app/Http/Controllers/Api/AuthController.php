@@ -48,6 +48,7 @@ class AuthController extends Controller
             'id' => $user->id,
             'name' => $user->name,
             'email' => $user->email,
+            'phone' => $user->phone,
             'token' => explode('|', $user->createToken($request->device_name)->plainTextToken)[1]
         ));
     }
