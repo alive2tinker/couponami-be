@@ -56,7 +56,7 @@ class AuthController extends Controller
 
     public function registerToken(Request $request)
     {
-        NotificationToken::create([
+        NotificationToken::firstOrCreate([
             'token' => $request->input('notifyToken')
         ]);
 
